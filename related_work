@@ -1,0 +1,44 @@
+Multicast discussion
+---------
+- [Diot 2000]
+@article{diot2000deployment,
+  title={Deployment issues for the IP multicast service and architecture},
+  author={Diot, Christophe and Levine, Brian Neil and Lyles, Bryan and Kassem, Hassan and Balensiefen, Doug},
+  journal={IEEE network},
+  volume={14},
+  number={1},
+  pages={78--88},
+  year={2000},
+  publisher={IEEE}
+}
+
+- [Sharma 2003]
+@article{sharma2003ip,
+  title={IP multicast operational network management: design, challenges, and experiences},
+  author={Sharma, Puneet and Perry, Edward and Malpani, Radhika},
+  journal={IEEE network},
+  volume={17},
+  number={2},
+  pages={49--55},
+  year={2003},
+  publisher={IEEE}
+}
+
+Examples of multicast being used
+----------------------------------
+- [Internet2 Multicast 2007]
+
+- [BBC Multicast 2007]
+https://support.bbc.co.uk/multicast/
+
+- [ESM 2007]
+@article{chu2002case,
+  title={A case for end system multicast},
+  author={Chu, Yang-hua and Rao, Sanjay G and Seshan, Srinivasan and Zhang, Hui},
+  journal={IEEE Journal on selected areas in communications},
+  volume={20},
+  number={8},
+  pages={1456--1471},
+  year={2002},
+  publisher={IEEE}
+}
