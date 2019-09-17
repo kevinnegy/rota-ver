@@ -46,9 +46,14 @@ https://support.bbc.co.uk/multicast/
 Netflix Open Connect Appliances
 -------------------------------
 https://openconnect.netflix.com/Open-Connect-Overview.pdf
+Netflix uses its own content delivery network called Open Connect. It also partners with ISPs to host their Open Connect Appliances to bring content closer to customers. Seems to use TCP.
 
 HTTP Persistent Connection
 --------------------------
 https://en.wikipedia.org/wiki/HTTP_persistent_connection
+http initially was a connectionless TCP protocol. It would need to create a new TCP connection/request for each individual image and object within a webpage until the full page was loaded. To eliminate the overhead of multiple TCP connection setup and breakdown, newer versions of http implemented persistent connection, which set up one connection for a page and kept the connection open until all the requests of the page were completed.
 
-
+BitTorrent
+----------
+http://www.bittorrent.org/beps/bep_0029.html
+Originally, used TCP, but TCP gave equal priority to bittorrent as other urgent programs. So the uTorrent transfer protocol (uTP) was created which uses UDP and an application layer reliability implementation. uTP can throttle itself when the packet buffer is full with the goal of leaving non-background internet tasks unaffected by uTP.
