@@ -52,6 +52,7 @@ HTTP Persistent Connection
 --------------------------
 https://en.wikipedia.org/wiki/HTTP_persistent_connection
 http initially was a connectionless TCP protocol. It would need to create a new TCP connection/request for each individual image and object within a webpage until the full page was loaded. To eliminate the overhead of multiple TCP connection setup and breakdown, newer versions of http implemented persistent connection, which set up one connection for a page and kept the connection open until all the requests of the page were completed.
+http 2.0 allows for "server push", in which the server prematurely sends relevant site data to user even before the user has requested it to cut down latency. For instance, after the first request for the webpage layout, the server knows that the user will also ask for all the images in the webpage so it can send that immediately instead of waiting for the following requests. Need to look into this more. Does not seem to care about how hot records are, only if the webpage developer has explicitly identified what files/objects should be sent once the first request comes in.
 
 BitTorrent
 ----------
