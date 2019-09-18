@@ -1,3 +1,11 @@
+Record-oriented TCP
+Goal: Create new records API in the OS on top of TCP sockets.
+
+Features:
+1) No changes on the wire in the network layer.
+2) Record pinning, prioritization, broadcasting, unsend
+3) Security/memory usage attacks
+
 The current networking stack in the OS and network layers make two assumptions:
   1) Units of work are demarcated by some ending signal (e.g. a flow closing, a process finishing, etc)
   2) Data flows from point to point.
