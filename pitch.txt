@@ -6,13 +6,23 @@ Both of these problems have had solutions in the prior literature.
   1) Prioritization of packets [1], QoS work in the networking literature
   2) TCP/IP Multicast
   
-However, the networking literature 
-  
-  
-  
-  
+However, the networking literature largely assumes that the network design can be changed which is very difficult to
+  do on the wide area network.
+Additionally, custom networking protocols are not always TCP-friendly and may have strange interactions with other
+protocols.
+
+
+Additional thoughts:
+- TCP stack has lots of hacks due to the mismatch between app and network layers. For example, socket reuse, priority
+  sending.
+- Complicates the app layer, needs specialized knowledge to leverage these fully.
+- Makes network QoS guarantees more difficult (e.g. some elephant flows may be a series of short flows that are not clearly demarcated)
+
+ 
 Application:
 1) Web Server serving many requests for the same object.
+2) Memcached/Redis
+3) PBFT/cryptocurrency broadcast
   
 References:
 
