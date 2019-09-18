@@ -23,6 +23,7 @@ Application:
 1) Web Server serving many requests for the same object.
 2) Memcached/Redis
 3) PBFT/cryptocurrency broadcast
+4) DNS servers
   
 References:
 
