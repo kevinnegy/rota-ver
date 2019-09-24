@@ -1,0 +1,50 @@
+
+Modern networked applications operate on messages- individual, variable chunks of bytes that represent a unit of work.
+However, the networking stack is optimized towards transferring the largest number of bytes possible and treats all
+bytes equally.
+In the networking stack, a unit of work is terminated when a flow terminates rather than when a message terminates.
+
+Applications that need additional features from the network (e.g. prioritization, multicast, etc) either must implement it themselves or develop a new network protocol to implement these features.
+The former is often implemented in user-space, such as broadcast in cryptocurrency networks, which is inefficient.
+The latter approach, while efficient, is doomed to fail due to network ossification.
+We want to show that the operating system can provide a rich API that enables applications to use these features with
+very high performance. 
+
+Our project argues for a unified approach to these new features: a new socket layer that is based on the idea of a record, a variable sized, application defined sequence of bytes.
+Records are referred to using a kernel handle and can be manipulated in a rich variety of ways.
+Specifically, our records API is the following:
+
+1) init_record (buf): Initializes a record consisting of this buffer. Returns a record handle.
+2) send_record (handle, group, priority): Sends a record to a group of receivers with a certain priority.
+3) recv_record (sock): Receives a new record from the socket.
+4) unsend_record (handle, group): Stops sending a record to the group (this is best effort)
+5) del_record (handle): Deletes the record
+
+
+The key properties of our approach are:
+
+  1) No wire protocol changes- our records API rests completely on top of TCP.
+  2) Lower memory overhead- if the same data is being sent to many receivers, it is only in one buffer rather than being
+  in each socket buffer.
+  3) Data can be spliced in and out of the TCP bytestream since the socket layer knows where the pertinent boundaries
+  are.
+  4) The application only needs to be woken up when a full record is available (rather than just bytes).
+
+
+Classes of applications that can benefit:
+
+1) Client-server apps where queries processed by the server have some repetition (e.g. memcached/redis, a webserver, DNS
+servers)
+2) Applications that need to broadcast data (e.g. PBFT/cryptocurrency)
+
+
+Questions for Sylvia:
+
+1) How big is this idea?
+    - came from cryptocurrency, but its improvement will likely be < 2x for that application class.
+    - Microbenchmarks would easily be a ~10x improvement.
+
+2) List of related work that she knows off the top of her head.
+
+3) Are there any particular pitfalls to avoid when implementing this?
+
